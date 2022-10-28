@@ -28,8 +28,12 @@
     <div class="post-content">
       {{ .Content }}
     </div>
-    <div class="post-footer">
+    <!-- <div class="post-footer">
       {{ template "_internal/disqus.html" . }}
+    </div> -->
+    <div>
+      {{ partial "disqus.html" . }}
     </div>
+  
   </article>
 {{ end }}
