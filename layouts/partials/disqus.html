@@ -4,6 +4,8 @@
     // Don't ever inject Disqus on localhost--it creates unwanted
     // discussions from 'localhost:1313' on your Disqus account...
     // if (window.location.hostname == "localhost") return;
+    // also only show comments on posts, not pages
+    if (window.location.pathname.indexOf("/posts/") == -1) return;
 
     var dsq = document.createElement("script");
     dsq.type = "text/javascript";
@@ -22,6 +24,10 @@
     >comments powered by Disqus.</a
   ></noscript
 >
+<!-- if the page is inside /post show -->
+{{ if hasPrefix .Page.RelPermalink  "/posts" }}
+
 <a href="https://disqus.com/" class="dsq-brlink"
-  >comments powered by <span class="logo-disqus">Disqus</span></a
+> comments powered by <span class="logo-disqus">Disqus</span></a
 >
+{{ end }}
